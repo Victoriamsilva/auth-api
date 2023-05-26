@@ -1,16 +1,16 @@
 const { body, param, validationResponse, validationResult } = require('express-validator')
 const { getOneUser, getUsers, getEmail } = require('../model/user')
-const { ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken');
 
 const res = require('express/lib/response');
 
 exports.validateId = [
-    param('id').notEmpty().custom((value) => ObjectId.isValid(value))
+    param('id').notEmpty()
 ]
 
 exports.validateUserFields = [
-    body('senha').trim().notEmpty().isString(),
+    body('name').trim().isString(),
+    body('password').trim().notEmpty().isString(),
     body('email').trim().notEmpty().isEmail()
 ]
 
@@ -24,8 +24,8 @@ exports.validateErrorUser = (req, res, next) => {
 
 exports.validateEmail = async (req, res, next) => {
     const { email } = req.body
-    const { data } = await getEmail(email)
-    if (data) return res.status(400).json({ message: 'E-mail já existente.' })
+    const {user} = await getEmail(email)
+    if ( user && user.length > 0) return res.status(400).json({ message: 'E-mail já existente.' })
     return next()
 }
 

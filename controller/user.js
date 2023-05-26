@@ -30,31 +30,31 @@ exports.login = async (req, res) => {
     }
 }
 
-exports.getOne = async (req, res) => {
-    try {
-        const response = await getOneUser(req.params.id)
-        res.status(response.status).json(response.data)
-    } catch (error) {
-        return res.status(500).json({ message: 'Erro inesperado' })
-    }
-}
+// exports.getOne = async (req, res) => {
+//     try {
+//         const response = await getOneUser(req.params.id)
+//         res.status(response.status).json(response.data)
+//     } catch (error) {
+//         return res.status(500).json({ message: 'Erro inesperado' })
+//     }
+// }
 
-exports.put = async (req, res) => {
-    try {
-        const response = await putUser(req.params.id, req.body)
-        res.status(response.status).json(response.data)
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({ message: 'Erro inesperado' })
-    }
-}
+// exports.put = async (req, res) => {
+//     try {
+//         const response = await putUser(req.params.id, req.body)
+//         res.status(response.status).json(response.data)
+//     } catch (error) {
+//         console.log(error)
+//         return res.status(500).json({ message: 'Erro inesperado' })
+//     }
+// }
 
-exports.remove = async (req, res) => {
-    try {
-        const response = await removeUser(req.params.id)
-        res.status(response.status).json(response.data)
-    } catch (error) {
-        return res.status(500).json({ message: 'Erro inesperado' })
-    }
-}
+// exports.remove = async (req, res) => {
+//     try {
+//         const response = await removeUser(req.params.id)
+//         res.status(response.status).json(response.data)
+//     } catch (error) {
+//         return res.status(500).json({ message: 'Erro inesperado' })
+//     }
+// }
 
