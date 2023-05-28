@@ -4,7 +4,6 @@ const {execSQLQuery} = require('../database/connection')
 exports.postUser = async ({name, email, password }) => {
     const query = `INSERT INTO user (email, password, name) VALUES ('${email}', '${password}', '${name}')`
     const user = await execSQLQuery(query);
-    console.log(user)
     const token = jwt.sign({ id: user.id }, process.env.SECRET, {
         expiresIn: 30000
     })

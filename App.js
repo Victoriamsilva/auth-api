@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 require("dotenv-safe").config();
 const app = express();
